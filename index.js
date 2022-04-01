@@ -10,7 +10,7 @@ const Game = require("./models/game");
   mongoose.connect(process.env.MONGO_URI);
 
   if (argv.add) {
-    const game = new Game({ name: argv.name, releaseDate: argv.releaseDate });
+    const game = new Game({ name: argv.name, publisher: argv.publisher, consoleRelease: argv.consoleRelease, releaseYear: argv.releaseYear });
     await game.save();
     console.log(game);
   } else if (argv.find) {
@@ -25,7 +25,7 @@ const Game = require("./models/game");
     console.log(argv.name)
     const updateGame = await Game.findOneAndUpdate(
       { name: argv.name[0] },
-      { name: argv.name[1], releaseDate: parseInt(argv.releaseDate) },
+      { name: argv.name[1], publisher: argv.publisher, consoleRelease: argv.consoleRelease, releaseYear: parseInt(argv.releaseYear) },
       { new: true }
     );
     console.log(updateGame);

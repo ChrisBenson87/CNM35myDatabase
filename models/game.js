@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 
 const Game = mongoose.model("Game", {
   name: { type: String, unique: true },
-  releaseDate: { type: Number }
+  publisher: { type: String, unique: true },
+  consoleRelease: { type: String, unique: true },
+  releaseYear: { type: Number }
 });
 
 module.exports = Game
